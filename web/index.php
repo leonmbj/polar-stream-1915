@@ -34,6 +34,7 @@ $app->register(new Herrera\Pdo\PdoServiceProvider(),
   )
 );
 
+// teste de bd
 $app->get('/db/', function() use($app) {
   $st = $app['pdo']->prepare('SELECT * FROM test_table');
   $st->execute();
@@ -48,6 +49,25 @@ $app->get('/db/', function() use($app) {
     'names' => $names
   ));
 });
+
+// app propriamente dito
+
+$app->get('/itriad/', function() use($app) {
+  $st = $app['pdo']->prepare('SELECT * FROM test_table');
+  $st->execute();
+
+  $names = array();
+  while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+    $app['monolog']->addDebug('Row ' . $row['name']);
+    $names[] = $row;
+  }
+
+  return $app['twig']->render('pesquisa.twig', array(
+    'names' => $names
+  ));
+});
+
+
 
 
 $app->run();

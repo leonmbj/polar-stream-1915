@@ -5,7 +5,8 @@
     "twig/twig": "^1.19",
     "symfony/twig-bridge": "^2.7",
     "herrera-io/silex-pdo": "^1.2",
-    "alrik11es/cowsayphp": "^1.0"
+    "alrik11es/cowsayphp": "^1.0",
+    "twbs/bootstrap": "^3.3"
   },
   "require-dev": {
     "heroku/heroku-buildpack-php": "*"
