@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6797c0ca-6066-4964-9ca1-efd579405781" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.php" afterPath="$PROJECT_DIR$/web/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/views/editar.twig" afterPath="$PROJECT_DIR$/web/views/editar.twig" />
     </list>
     <ignored path="php-getting-started.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,15 +27,15 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0543602">
-              <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.3657984">
+              <caret line="84" column="3" selection-start-line="84" selection-start-column="3" selection-end-line="84" selection-end-column="3" />
               <folding>
-                <marker date="1452105975075" expanded="true" signature="959:983" placeholder="SELECT * FRO... test_table" />
-                <marker date="1452105975075" expanded="true" signature="1404:1418" placeholder="SELECT * FRO... test_table" />
-                <marker date="1452105975075" expanded="true" signature="1404:1429" placeholder="SELECT * FRO... funcionario" />
-                <marker date="1452105975075" expanded="true" signature="1788:1823" placeholder="SELECT * FRO... funcionario" />
-                <marker date="1452105975075" expanded="true" signature="2315:2542" placeholder="UPDATE funci... " />
-                <marker date="1452105975075" expanded="true" signature="2321:2542" placeholder="SELECT * FRO... funcionario" />
+                <marker date="1452107046970" expanded="true" signature="959:983" placeholder="SELECT * FRO... test_table" />
+                <marker date="1452107046970" expanded="true" signature="1404:1418" placeholder="SELECT * FRO... test_table" />
+                <marker date="1452107046970" expanded="true" signature="1404:1429" placeholder="SELECT * FRO... funcionario" />
+                <marker date="1452107046970" expanded="true" signature="1788:1823" placeholder="SELECT * FRO... funcionario" />
+                <marker date="1452107046970" expanded="true" signature="2494:2685" placeholder="UPDATE funci... " />
+                <marker date="1452107046970" expanded="true" signature="2500:2685" placeholder="SELECT * FRO... funcionario" />
               </folding>
             </state>
           </provider>
@@ -400,15 +399,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0543602">
-          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3657984">
+          <caret line="84" column="3" selection-start-line="84" selection-start-column="3" selection-end-line="84" selection-end-column="3" />
           <folding>
-            <marker date="1452105975075" expanded="true" signature="959:983" placeholder="SELECT * FRO... test_table" />
-            <marker date="1452105975075" expanded="true" signature="1404:1418" placeholder="SELECT * FRO... test_table" />
-            <marker date="1452105975075" expanded="true" signature="1404:1429" placeholder="SELECT * FRO... funcionario" />
-            <marker date="1452105975075" expanded="true" signature="1788:1823" placeholder="SELECT * FRO... funcionario" />
-            <marker date="1452105975075" expanded="true" signature="2315:2542" placeholder="UPDATE funci... " />
-            <marker date="1452105975075" expanded="true" signature="2321:2542" placeholder="SELECT * FRO... funcionario" />
+            <marker date="1452107046970" expanded="true" signature="959:983" placeholder="SELECT * FRO... test_table" />
+            <marker date="1452107046970" expanded="true" signature="1404:1418" placeholder="SELECT * FRO... test_table" />
+            <marker date="1452107046970" expanded="true" signature="1404:1429" placeholder="SELECT * FRO... funcionario" />
+            <marker date="1452107046970" expanded="true" signature="1788:1823" placeholder="SELECT * FRO... funcionario" />
+            <marker date="1452107046970" expanded="true" signature="2494:2685" placeholder="UPDATE funci... " />
+            <marker date="1452107046970" expanded="true" signature="2500:2685" placeholder="SELECT * FRO... funcionario" />
           </folding>
         </state>
       </provider>

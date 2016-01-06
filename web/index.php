@@ -91,13 +91,17 @@ $app->get('/editar/', function() use($app) {
 
 
 // salvar registro editado
-$app->post('/salvar/{id}', function($id) use($app) {
+$app->match('/salvar/{id}', function(Request $request, $id) use($app) {
+  $nome = $request->get('nome');
+  $cpf = $request->get('cpf');
+  $endereco = $request->get('endereco');
+  $data_nascimento = $request->get('data_nascimento');
   $st = $app['pdo']->prepare(
       'UPDATE funcionario
-       SET  cpf = '.$_POST['cpf'].',
-            nome = \''.$_POST['nome'].'\'
-            endereco = \''.$_POST['endereco'].'\'
-            data_nascimento = \''.$_POST['data_nascimento'].'\'
+       SET  cpf = '.$cpf.',
+            nome = \''.$nome.'\'
+            endereco = \''.$endereco.'\'
+            data_nascimento = \''.$data_nascimento.'\'
       where id='.$id
   );
   $st->execute();
