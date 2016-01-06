@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6797c0ca-6066-4964-9ca1-efd579405781" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.php" afterPath="$PROJECT_DIR$/web/index.php" />
-    </list>
+    <list default="true" id="6797c0ca-6066-4964-9ca1-efd579405781" name="Default" comment="" />
     <ignored path="php-getting-started.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -27,8 +25,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5651189">
-              <caret line="95" column="23" selection-start-line="95" selection-start-column="23" selection-end-line="95" selection-end-column="23" />
+            <state vertical-scroll-proportion="-0.41336355">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding>
                 <marker date="1452107494614" expanded="true" signature="959:983" placeholder="SELECT * FRO... test_table" />
                 <marker date="1452107494614" expanded="true" signature="1404:1418" placeholder="SELECT * FRO... test_table" />
@@ -399,8 +397,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5651189">
-          <caret line="95" column="23" selection-start-line="95" selection-start-column="23" selection-end-line="95" selection-end-column="23" />
+        <state vertical-scroll-proportion="-0.41336355">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding>
             <marker date="1452107494614" expanded="true" signature="959:983" placeholder="SELECT * FRO... test_table" />
             <marker date="1452107494614" expanded="true" signature="1404:1418" placeholder="SELECT * FRO... test_table" />
