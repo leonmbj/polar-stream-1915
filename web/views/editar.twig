@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>Funcionários</h1>
+
+    <form action="">
+
+    </form>
+
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Ver</th>
+            <th>Nome</th>
+
+        </tr>
+        </thead>
+        {% for n in names %}
+            <tr><td> <a href="/editar/{{ n.id }}">{{ n.cpf }}</a> </td><td> {{ n.nome }} </td></tr>
+        {% else %}
+            <tr><td colspan="3">SEM REGISTROS.</td></tr>
+        {% endfor %}
+    </table>
+</div>
+</div>
+{% endblock %}
