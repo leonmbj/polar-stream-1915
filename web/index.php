@@ -15,7 +15,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/views',
 ));
 
-// Our web handlers
+// inicial
 
 $app->get('/', function() use($app) {
   $app['monolog']->addDebug('logging output.');
@@ -23,7 +23,7 @@ $app->get('/', function() use($app) {
 });
 
 
-
+//conexão com banco de dados
 $dbopts = parse_url(getenv('DATABASE_URL'));
 $app->register(new Herrera\Pdo\PdoServiceProvider(),
   array(
@@ -50,8 +50,9 @@ $app->get('/db/', function() use($app) {
   ));
 });
 
-// app propriamente dito
+//  ----------------- app propriamente dito ----------------------
 
+// inicial pesquisa
 $app->get('/itriad/', function() use($app) {
   $st = $app['pdo']->prepare('SELECT * FROM funcionario');
   $st->execute();
@@ -67,6 +68,7 @@ $app->get('/itriad/', function() use($app) {
   ));
 });
 
+// editar registro
 $app->get('/editar/{id}', function($id) use($app) {
   $st = $app['pdo']->prepare('SELECT * FROM funcionario where id='.$id);
   $st->execute();
@@ -82,11 +84,26 @@ $app->get('/editar/{id}', function($id) use($app) {
   ));
 });
 
+//adicionar novo
 $app->get('/editar/', function() use($app) {
-  return $app['twig']->render('editar.twig');
+  return $app['twig']->render('criar.twig');
 });
 
 
+// salvar registro editado
+$app->get('/salvar/{id}', function($id) use($app) {
+  $st = $app['pdo']->prepare(
+      'UPDATE funcionario
+       SET  cpf = '.$_POST['cpf'].',
+            nome = \''.$_POST['nome'].'\'
+            endereco = \''.$_POST['endereco'].'\'
+            data_nascimento = \''.$_POST['data_nascimento'].'\'
+      where id='.$id
+  );
+  $st->execute();
+
+  return $app->redirect('/editar/{id}');
+});
 
 
 $app->run();

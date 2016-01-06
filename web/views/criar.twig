@@ -2,57 +2,45 @@
 
 {% block content %}
 
-<div class="container">
-    <h1>Funcionário </h1>
+    <div class="container">
+        <h1>Funcionário </h1>
 
         <form class="form-horizontal" role="form" action="/salvar/" method="post">
 
-            {% for n in names %}
-
 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="cpf">C.P.F.:</label>
+                    <label class="control-label col-sm-2" for="cpf">Nome:</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="cpf" name="cpf" placeholder="Somente números" value="{{ n.cpf }}">
+                        <input type="number" class="form-control" id="cpf" name="cpf" placeholder="Somente números">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="nome">Nome:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo" value="{{ n.nome }}">
+                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome completo">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="endereco">Endereço:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua X, n Y, Bairro Z" value="{{ n.endereco }}">
+                        <input type="text" class="form-control" id="endereco" name="endereco" placeholder="Rua X, n Y, Bairro Z">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="data_nascimento">Data de Nascimento:</label>
                     <div class="col-sm-10">
-                        <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" placeholder="00/00/0000" value="{{ n.data_nascimento }}">
+                        <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" placeholder="00/00/0000">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Salvar</button>
+                        <button type="submit" class="btn btn-default">Registrar</button>
                     </div>
                 </div>
 
+        </form>
 
-            {% else %}
-
-
-                ERRO!
-
-
-            {% endfor %}
-
-
-    </form>
-
-</div>
+    </div>
 
 {% endblock %}
