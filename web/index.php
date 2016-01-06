@@ -91,7 +91,7 @@ $app->get('/editar/', function() use($app) {
 
 
 // salvar registro editado
-$app->get('/salvar/{id}', function($id) use($app) {
+$app->post('/salvar/{id}', function($id) use($app) {
   $st = $app['pdo']->prepare(
       'UPDATE funcionario
        SET  cpf = '.$_POST['cpf'].',
