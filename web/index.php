@@ -82,6 +82,10 @@ $app->get('/editar/{id}', function($id) use($app) {
   ));
 });
 
+$app->get('/editar/', function() use($app) {
+  return $app['twig']->render('editar.twig');
+});
+
 
 
 
