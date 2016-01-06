@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6797c0ca-6066-4964-9ca1-efd579405781" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.php" afterPath="$PROJECT_DIR$/web/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/views/criar.twig" afterPath="$PROJECT_DIR$/web/views/criar.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/views/editar.twig" afterPath="$PROJECT_DIR$/web/views/editar.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/views/pesquisa.twig" afterPath="$PROJECT_DIR$/web/views/pesquisa.twig" />
     </list>
     <ignored path="php-getting-started.iws" />
@@ -27,11 +24,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.75330395">
-              <caret line="123" column="38" selection-start-line="123" selection-start-column="38" selection-end-line="123" selection-end-column="38" />
+            <state vertical-scroll-proportion="-38.24">
+              <caret line="122" column="19" selection-start-line="122" selection-start-column="19" selection-end-line="122" selection-end-column="19" />
               <folding>
                 <element signature="e#2350#2395#0#PHP" expanded="true" />
                 <marker date="1452109614227" expanded="true" signature="1000:1024" placeholder="SELECT * FRO... test_table" />
@@ -51,10 +48,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-7.04">
               <caret line="15" column="45" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="45" />
-              <folding>
-                <marker date="1452108717563" expanded="true" signature="29:2312" placeholder="{% block content ...%}" />
-                <marker date="1452108717563" expanded="true" signature="116:2228" placeholder="{% for n in names ...%}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pesquisa.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pesquisa.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/views/pesquisa.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.105726875">
+              <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -120,9 +114,9 @@
         <option value="$PROJECT_DIR$/web/views/layout.html" />
         <option value="$PROJECT_DIR$/update.sh" />
         <option value="$PROJECT_DIR$/web/views/editar.twig" />
-        <option value="$PROJECT_DIR$/web/views/pesquisa.twig" />
         <option value="$PROJECT_DIR$/web/views/criar.twig" />
         <option value="$PROJECT_DIR$/web/index.php" />
+        <option value="$PROJECT_DIR$/web/views/pesquisa.twig" />
       </list>
     </option>
   </component>
@@ -390,21 +384,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/pesquisa.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/views/editar.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.04">
           <caret line="15" column="45" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-38.24">
+          <caret line="122" column="19" selection-start-line="122" selection-start-column="19" selection-end-line="122" selection-end-column="19" />
           <folding>
-            <marker date="1452108717563" expanded="true" signature="29:2312" placeholder="{% block content ...%}" />
-            <marker date="1452108717563" expanded="true" signature="116:2228" placeholder="{% for n in names ...%}" />
+            <element signature="e#2350#2395#0#PHP" expanded="true" />
+            <marker date="1452109614227" expanded="true" signature="1000:1024" placeholder="SELECT * FRO... test_table" />
+            <marker date="1452109614227" expanded="true" signature="1473:1487" placeholder="SELECT * FRO... test_table" />
+            <marker date="1452109614227" expanded="true" signature="1473:1498" placeholder="SELECT * FRO... funcionario" />
+            <marker date="1452109614227" expanded="true" signature="1885:1920" placeholder="SELECT * FRO... funcionario" />
+            <marker date="1452109614227" expanded="true" signature="2697:2906" placeholder="UPDATE funci... " />
+            <marker date="1452109614227" expanded="true" signature="3325:3474" placeholder="INSERT into funcionario... " />
+            <marker date="1452109614227" expanded="true" signature="3336:3474" placeholder="UPDATE funci... " />
           </folding>
         </state>
       </provider>
@@ -417,20 +417,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.php">
+    <entry file="file://$PROJECT_DIR$/web/views/pesquisa.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75330395">
-          <caret line="123" column="38" selection-start-line="123" selection-start-column="38" selection-end-line="123" selection-end-column="38" />
-          <folding>
-            <element signature="e#2350#2395#0#PHP" expanded="true" />
-            <marker date="1452109614227" expanded="true" signature="1000:1024" placeholder="SELECT * FRO... test_table" />
-            <marker date="1452109614227" expanded="true" signature="1473:1487" placeholder="SELECT * FRO... test_table" />
-            <marker date="1452109614227" expanded="true" signature="1473:1498" placeholder="SELECT * FRO... funcionario" />
-            <marker date="1452109614227" expanded="true" signature="1885:1920" placeholder="SELECT * FRO... funcionario" />
-            <marker date="1452109614227" expanded="true" signature="2697:2906" placeholder="UPDATE funci... " />
-            <marker date="1452109614227" expanded="true" signature="3325:3474" placeholder="INSERT into funcionario... " />
-            <marker date="1452109614227" expanded="true" signature="3336:3474" placeholder="UPDATE funci... " />
-          </folding>
+        <state vertical-scroll-proportion="0.105726875">
+          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>
