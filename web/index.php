@@ -118,13 +118,13 @@ $app->post('/salvar/', function (Request $request) use ($app) {
     $cpf = $request->get('cpf');
     $endereco = $request->get('endereco');
     $data_nascimento = $request->get('data_nascimento');
-    $sql = 'INSERT into funcionario (cpf,nome,endereco,data_nascimento) VALUES (' . $cpf . ',\'' . $nome . '\',\'' . $endereco . '\',\'' . $data_nascimento . '\'';
+    $sql = 'INSERT into funcionario (cpf,nome,endereco,data_nascimento) VALUES (' . $cpf . ',\'' . $nome . '\',\'' . $endereco . '\',\'' . $data_nascimento . '\');';
     $st = $app['pdo']->prepare($sql);
     $st->execute();
     $id = $app['pdo']->lastInsertId();
 
-    return new Response($sql, 201);
-    //return $app->redirect("/editar/$id");
+    //return new Response($sql, 201);
+    return $app->redirect("/editar/$id");
 });
 
 
