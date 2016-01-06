@@ -1,14 +1,30 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<p>Got these rows from the database:</p>
 
-<ul>
-{% for n in names %}
-  <li> {{ n.id }} - {{ n.name }} </li>
-{% else %}
-  <li>Nameless!</li>
-{% endfor %}
-</ul>
+    <h1>Funcionários</h1>
+
+    <form action="">
+
+    </form>
+
+
+
+    <table>
+        <tr>
+            <td>
+                Ver
+            </td>
+            <td>
+                Nome
+            </td>
+
+        </tr>
+        {% for n in names %}
+            <tr><td> {{ n.id }} </td><td> {{ n.name }} </td></tr>
+        {% else %}
+            <tr><td colspan="3">SEM REGISTROS.</td></tr>
+        {% endfor %}
+    </table>
 
 {% endblock %}
