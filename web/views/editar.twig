@@ -2,28 +2,46 @@
 
 {% block content %}
 <div class="container">
-    <h1>Funcionários</h1>
+    <h1>Funcionário </h1>
 
-    <form action="">
+
+    <form action="/salvar/" method="post">
+        <table>
+            {% for n in names %}
+            <tr>
+                <td>CPF:</td><td><input name="cpf"></td>
+            </tr>
+            <tr>
+                <td>NOME:</td><td><input name="nome"></td>
+            </tr>
+            <tr>
+                <td>ENDEREÇO:</td><td><input name="endereco"></td>
+            </tr>
+            <tr>
+                <td>DATA DE NASCIMENTO:</td><td><input name="data_nascimento"></td>
+            </tr>
+            {% else %}
+                <tr>
+                    <td>CPF:</td><td><input name="cpf" value="{{ n.cpf }}"></td>
+                </tr>
+                <tr>
+                    <td>NOME:</td><td><input name="nome" value="{{ n.nome }}"></td>
+                </tr>
+                <tr>
+                    <td>ENDEREÇO:</td><td><input name="endereco" value="{{ n.endereco }}"></td>
+                </tr>
+                <tr>
+                    <td>DATA DE NASCIMENTO:</td><td><input name="data_nascimento" value="{{ n.data_nascimento }}"></td>
+                </tr>
+            {% endfor %}
+        </table>
 
     </form>
 
 
-<div class="table-responsive">
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Ver</th>
-            <th>Nome</th>
 
-        </tr>
-        </thead>
-        {% for n in names %}
-            <tr><td> <a href="/editar/{{ n.id }}">{{ n.cpf }}</a> </td><td> {{ n.nome }} </td></tr>
-        {% else %}
-            <tr><td colspan="3">SEM REGISTROS.</td></tr>
-        {% endfor %}
-    </table>
-</div>
+
+
+
 </div>
 {% endblock %}
