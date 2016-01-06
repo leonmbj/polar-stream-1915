@@ -109,7 +109,7 @@ $app->post('/salvar/{id}', function(Request $request, $id) use($app) {
   );
   $st->execute();
 
-  return $app->redirect('/editar/{id}');
+  return $app->redirect("/editar/$id");
 });
 
 
