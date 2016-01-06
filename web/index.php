@@ -2,6 +2,9 @@
 
 require('../vendor/autoload.php');
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 $app = new Silex\Application();
 $app['debug'] = true;
 
@@ -79,8 +82,18 @@ $app->get('/editar/{id}', function ($id) use ($app) {
         $names[] = $row;
     }
 
+    //gerar lista de dependentes
+    $st2 = $app['pdo']->prepare('SELECT * FROM dependente where funcionario_id=' . $id);
+    $st2->execute();
+
+    $names2 = array();
+    while ($row2 = $st2->fetch(PDO::FETCH_ASSOC)) {
+        $app['monolog']->addDebug('Row ' . $row2['name']);
+        $names2[] = $row2;
+    }
+
     return $app['twig']->render('editar.twig', array(
-        'names' => $names
+        'names' => $names, 'names2' => $names2
     ));
 });
 
@@ -91,8 +104,6 @@ $app->get('/editar/', function () use ($app) {
 
 
 // salvar registro editado
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 $app->post('/salvar/{id}', function (Request $request, $id) use ($app) {
     $nome = $request->get('nome');

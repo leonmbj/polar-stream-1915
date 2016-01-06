@@ -59,6 +59,41 @@
 
         <br><br>
         <a href="/itriad/">Voltar</a>
+        <br><br>
+
+        <h1>Dependentes</h1>
+
+        <br><br>
+        <form action="/editar_dependente/" method="get">
+            <input type="submit" value="Adicionar Dependente" class="btn btn-success">
+        </form>
+        <br><br>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Parentesco</th>
+                    <th>Ação</th>
+
+                </tr>
+                </thead>
+                {% for n2 in names2 %}
+                    <tr>
+                        <td><a href="/editar_dependente/{{ n2.id }}">{{ n2.id }}</a></td>
+                        <td> {{ n2.nome }} </td>
+                        <td> {{ n2.parentesco }} </td>
+                        <td><a href="/apagar_dependente/{{ n2.id }}">Apagar</a></td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">SEM REGISTROS.</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
 
     </div>
 
