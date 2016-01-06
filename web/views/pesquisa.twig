@@ -19,7 +19,7 @@
         </tr>
         </thead>
         {% for n in names %}
-            <tr><td> {{ n.id }} </td><td> {{ n.name }} </td></tr>
+            <tr><td> <a href="/editar/{{ n.id }}">{{ n.id }}</a> </td><td> {{ n.name }} </td></tr>
         {% else %}
             <tr><td colspan="3">SEM REGISTROS.</td></tr>
         {% endfor %}
