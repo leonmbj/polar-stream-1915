@@ -53,7 +53,7 @@ $app->get('/db/', function() use($app) {
 // app propriamente dito
 
 $app->get('/itriad/', function() use($app) {
-  $st = $app['pdo']->prepare('SELECT * FROM test_table');
+  $st = $app['pdo']->prepare('SELECT * FROM funcionario');
   $st->execute();
 
   $names = array();
