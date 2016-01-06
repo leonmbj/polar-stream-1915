@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-
+<div class="container">
     <h1>Funcionários</h1>
 
     <form action="">
@@ -9,22 +9,21 @@
     </form>
 
 
-
-    <table>
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
         <tr>
-            <td>
-                Ver
-            </td>
-            <td>
-                Nome
-            </td>
+            <th>Ver</th>
+            <th>Nome</th>
 
         </tr>
+        </thead>
         {% for n in names %}
             <tr><td> {{ n.id }} </td><td> {{ n.name }} </td></tr>
         {% else %}
             <tr><td colspan="3">SEM REGISTROS.</td></tr>
         {% endfor %}
     </table>
-
+</div>
+</div>
 {% endblock %}
