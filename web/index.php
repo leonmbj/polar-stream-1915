@@ -99,17 +99,17 @@ $app->post('/salvar/{id}', function(Request $request, $id) use($app) {
   $cpf = $request->get('cpf');
   $endereco = $request->get('endereco');
   $data_nascimento = $request->get('data_nascimento');
-  $st = $app['pdo']->prepare(
-      'UPDATE funcionario
+  $sql = 'UPDATE funcionario
        SET  cpf = '.$cpf.',
             nome = \''.$nome.'\'
             endereco = \''.$endereco.'\'
             data_nascimento = \''.$data_nascimento.'\'
-      where id='.$id
-  );
+      where id='.$id;
+  $st = $app['pdo']->prepare($sql);
   $st->execute();
 
-  return $app->redirect("/editar/$id");
+  return new Response($sql, 201);
+  //return $app->redirect("/editar/$id");
 });
 
 
