@@ -85,11 +85,11 @@
                         <td><a href="/editar_dependente/{{ n2.id }}">{{ n2.id }}</a></td>
                         <td> {{ n2.nome }} </td>
                         <td> {{ n2.parentesco }} </td>
-                        <td><a href="/apagar_dependente/{{ n2.id }}">Apagar</a></td>
+                        <td><a href="/editar_dependente/{{ n2.id }}">Ver</a> | <a href="/apagar_dependente/{{ n2.id }}">Apagar</a></td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="3">SEM REGISTROS.</td>
+                        <td colspan="3">NENHUM DEPENDENTE REGISTRADO.</td>
                     </tr>
                 {% endfor %}
             </table>
