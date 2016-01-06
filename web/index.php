@@ -77,7 +77,7 @@ $app->get('/editar/{id}', function($id) use($app) {
     $names[] = $row;
   }
 
-  return $app['twig']->render('pesquisa.twig', array(
+  return $app['twig']->render('editar.twig', array(
       'names' => $names
   ));
 });
