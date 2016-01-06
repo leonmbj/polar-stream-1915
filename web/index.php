@@ -121,7 +121,12 @@ $app->post('/salvar/', function (Request $request) use ($app) {
     $sql = 'INSERT into funcionario (cpf,nome,endereco,data_nascimento) VALUES (' . $cpf . ',\'' . $nome . '\',\'' . $endereco . '\',\'' . $data_nascimento . '\');';
     $st = $app['pdo']->prepare($sql);
     $st->execute();
-    $id = $app['pdo']->lastInsertId();
+    //$id = $st-
+    //$id = $app['pdo']->lastInsertId();
+
+    $stmt = $app['pdo']->query("SELECT LAST_INSERT_ID()");
+    $lastId = $stmt->fetch(PDO::FETCH_NUM);
+    $id = $lastId[0];
 
     //return new Response($sql, 201);
     return $app->redirect("/editar/$id");
