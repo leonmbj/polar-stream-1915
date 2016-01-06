@@ -101,15 +101,15 @@ $app->post('/salvar/{id}', function(Request $request, $id) use($app) {
   $data_nascimento = $request->get('data_nascimento');
   $sql = 'UPDATE funcionario
        SET  cpf = '.$cpf.',
-            nome = \''.$nome.'\'
-            endereco = \''.$endereco.'\'
+            nome = \''.$nome.'\',
+            endereco = \''.$endereco.'\',
             data_nascimento = \''.$data_nascimento.'\'
       where id='.$id;
   $st = $app['pdo']->prepare($sql);
   $st->execute();
 
-  return new Response($sql, 201);
-  //return $app->redirect("/editar/$id");
+  //return new Response($sql, 201);
+  return $app->redirect("/editar/$id");
 });
 
 
