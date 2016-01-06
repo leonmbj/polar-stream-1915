@@ -123,8 +123,8 @@ $app->post('/salvar/', function (Request $request) use ($app) {
     $st->execute();
     $id = $app['pdo']->lastInsertId();
 
-    //return new Response($sql, 201);
-    return $app->redirect("/editar/$id");
+    return new Response($sql, 201);
+    //return $app->redirect("/editar/$id");
 });
 
 
