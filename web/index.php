@@ -118,18 +118,25 @@ $app->post('/salvar/', function (Request $request) use ($app) {
     $cpf = $request->get('cpf');
     $endereco = $request->get('endereco');
     $data_nascimento = $request->get('data_nascimento');
-    $sql = 'INSERT into funcionario (cpf,nome,endereco,data_nascimento) VALUES (' . $cpf . ',\'' . $nome . '\',\'' . $endereco . '\',\'' . $data_nascimento . '\');';
+    $sql = 'INSERT into funcionario (cpf,nome,endereco,data_nascimento)
+            VALUES (' . $cpf . ',\'' . $nome . '\',\'' . $endereco . '\',\'' . $data_nascimento . '\');';
     $st = $app['pdo']->prepare($sql);
     $st->execute();
-    //$id = $st-
-    //$id = $app['pdo']->lastInsertId();
 
-    $stmt = $app['pdo']->query("SELECT LAST_INSERT_ID()");
-    $lastId = $stmt->fetch(PDO::FETCH_NUM);
-    $id = $lastId[0];
+    $id = $app['pdo']->lastInsertId();
+
 
     //return new Response($sql, 201);
     return $app->redirect("/editar/$id");
+});
+
+
+// apagar registro
+$app->get('/apagar/{id}', function ($id) use ($app) {
+    $st = $app['pdo']->prepare('DELETE FROM funcionario where id=' . $id);
+    $st->execute();
+
+    return $app->redirect("/itriad/");
 });
 
 
