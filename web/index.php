@@ -186,9 +186,18 @@ $app->get('/editar_dependente/{id}', function ($id) use ($app) {
         $names[] = $row;
     }
 
+    //carregar parentesco
+    $conjuge = '';
+    $filho = '';
+    if ($names['parentesco']=='Cônjuge'){
+        $conjuge = 'selected';
+    } else {
+        $filho = 'selected';
+    }
+
 
     return $app['twig']->render('editar_dependente.twig', array(
-        'names' => $names, 'funcionario_id' => $names['funcionario_id'][0]
+        'names' => $names, 'funcionario_id' => $names['funcionario_id'][0], 'filho' => $filho, 'conjuge' => $conjuge
     ));
 });
 
