@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1>Funcionários</h1>
+
+        <br><br>
+        <form action="/editar/" method="get">
+            <input type="submit" value="Adicionar Funcionário" class="btn btn-success">
+        </form>
+        <br><br>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>CPF</th>
+                    <th>Nome</th>
+                    <th>Ação</th>
+
+                </tr>
+                </thead>
+                {% for n in names %}
+                    <tr>
+                        <td><a href="/editar/{{ n.id }}">{{ n.cpf }}</a></td>
+                        <td> {{ n.nome }} </td>
+                        <td><a href="/editar/{{ n.id }}">Editar</a> | <a href="/apagar/{{ n.id }}">Apagar</a></td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="3">SEM REGISTROS.</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}
