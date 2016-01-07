@@ -168,7 +168,7 @@ $app->get('/editar_dependente/{id}', function ($id) use ($app) {
     }
 
 
-    return $app['twig']->render('editar.twig', array(
+    return $app['twig']->render('editar_dependente.twig', array(
         'names' => $names
     ));
 });
