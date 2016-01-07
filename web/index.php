@@ -71,7 +71,9 @@ $app->get('/itriad/', function () use ($app) {
     ));
 });
 
-// editar registro
+// ------------------------- FUNCIONÁRIO -----------------------------
+
+// tela editar registro funcionario
 $app->get('/editar/{id}', function ($id) use ($app) {
     $st = $app['pdo']->prepare('SELECT * FROM funcionario where id=' . $id);
     $st->execute();
@@ -93,17 +95,17 @@ $app->get('/editar/{id}', function ($id) use ($app) {
     }
 
     return $app['twig']->render('editar.twig', array(
-        'names' => $names, 'names2' => $names2
+        'names' => $names, 'names2' => $names2, 'id' => $id
     ));
 });
 
-//adicionar novo
+// tela adicionar novo funcionario
 $app->get('/editar/', function () use ($app) {
     return $app['twig']->render('criar.twig');
 });
 
 
-// salvar registro editado
+// salvar registro editado funcionario
 
 $app->post('/salvar/{id}', function (Request $request, $id) use ($app) {
     $nome = $request->get('nome');
@@ -123,7 +125,7 @@ $app->post('/salvar/{id}', function (Request $request, $id) use ($app) {
     return $app->redirect("/editar/$id");
 });
 
-//criat novo registro
+//criar novo registro funcionario
 $app->post('/salvar/', function (Request $request) use ($app) {
     $nome = $request->get('nome');
     $cpf = $request->get('cpf');
@@ -142,9 +144,84 @@ $app->post('/salvar/', function (Request $request) use ($app) {
 });
 
 
-// apagar registro
+// apagar registro funcionario
 $app->get('/apagar/{id}', function ($id) use ($app) {
     $st = $app['pdo']->prepare('DELETE FROM funcionario where id=' . $id);
+    $st->execute();
+
+    return $app->redirect("/itriad/");
+});
+
+
+
+// ------------------------- DEPENDENTE -----------------------------
+
+// tela editar registro DEPENDENTE
+$app->get('/editar_dependente/{id}', function ($id) use ($app) {
+    $st = $app['pdo']->prepare('SELECT * FROM dependente where id=' . $id);
+    $st->execute();
+
+    $names = array();
+    while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+        $app['monolog']->addDebug('Row ' . $row['name']);
+        $names[] = $row;
+    }
+
+
+    return $app['twig']->render('editar.twig', array(
+        'names' => $names
+    ));
+});
+
+// tela adicionar novo DEPENDENTE
+$app->get('/criar_dependente/{funcionario_id}', function ($funcionario_id) use ($app) {
+    return $app['twig']->render('criar_dependente.twig', array(
+        'funcionario_id' => $funcionario_id
+    ));
+});
+
+
+// salvar registro editado DEPENDENTE
+
+$app->post('/salvar_dependente/{id}', function (Request $request, $id) use ($app) {
+    $nome = $request->get('nome');
+    $parentesco = $request->get('parentesco');
+    $data_nascimento = $request->get('data_nascimento');
+    $sql = 'UPDATE dependente
+       SET
+            nome = \'' . $nome . '\',
+            parentesco = \'' . $parentesco . '\',
+            data_nascimento = \'' . $data_nascimento . '\'
+      where id=' . $id;
+    $st = $app['pdo']->prepare($sql);
+    $st->execute();
+
+    //return new Response($sql, 201);
+    return $app->redirect("/editar_dependente/$id");
+});
+
+//criar novo registro DEPENDENTE
+$app->post('/salvar_dependente/', function (Request $request) use ($app) {
+    $nome = $request->get('nome');
+    $funcionario_id= $request->get('funcionario_id');
+    $parentesco = $request->get('endereco');
+    $data_nascimento = $request->get('data_nascimento');
+    $sql = 'INSERT into dependente (funcionario_id,nome,parentesco,data_nascimento)
+            VALUES (' . $funcionario_id . ',\'' . $nome . '\',\'' . $parentesco . '\',\'' . $data_nascimento . '\');';
+    $st = $app['pdo']->prepare($sql);
+    $st->execute();
+
+    $id = $app['pdo']->lastInsertId();
+
+
+    //return new Response($sql, 201);
+    return $app->redirect("/editar_dependente/$id");
+});
+
+
+// apagar registro DEPENDENTE
+$app->get('/apagar_dependente/{id}', function ($id) use ($app) {
+    $st = $app['pdo']->prepare('DELETE FROM dependente where id=' . $id);
     $st->execute();
 
     return $app->redirect("/itriad/");
