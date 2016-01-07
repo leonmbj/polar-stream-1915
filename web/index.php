@@ -113,7 +113,7 @@ $app->post('/salvar/{id}', function (Request $request, $id) use ($app) {
     $cpf = $request->get('cpf');
     $endereco = $request->get('endereco');
     $data_nascimento = $request->get('data_nascimento');
-
+    return new Response($data_nascimento, 201);
     //validacoes
     if (!validaData($data_nascimento)){
         return new Response('Data inválida<br><br><a href="/editar/'.$id.'">Voltar</a> ', 201);
