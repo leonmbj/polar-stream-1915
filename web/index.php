@@ -115,11 +115,11 @@ $app->post('/salvar/{id}', function (Request $request, $id) use ($app) {
     $data_nascimento = $request->get('data_nascimento');
 
     //validacoes
-    if (!(validaData2($data_nascimento))){
-        return new Response('Data inválida<br><br><a href="/editar/'.$id.'">Voltar</a> ', 201);
-    }
     if (!(valida_cpf($cpf))){
         return new Response('CPF inválido<br><br><a href="/editar/'.$id.'">Voltar</a> ', 201);
+    }
+    if (!(validaData2($data_nascimento))){
+        return new Response('Data inválida<br><br><a href="/editar/'.$id.'">Voltar</a> ', 201);
     }
 
     //update
@@ -144,11 +144,11 @@ $app->post('/salvar/', function (Request $request) use ($app) {
     $data_nascimento = $request->get('data_nascimento');
 
     //validacoes
-    if (!(validaData2($data_nascimento))){
-        return new Response('Data inválida<br><br><a href="/editar/">Voltar</a> ', 201);
-    }
     if (!(valida_cpf($cpf))){
         return new Response('CPF inválido<br><br><a href="/editar/">Voltar</a> ', 201);
+    }
+    if (!(validaData2($data_nascimento))){
+        return new Response('Data inválida<br><br><a href="/editar/">Voltar</a> ', 201);
     }
 
     //insert
