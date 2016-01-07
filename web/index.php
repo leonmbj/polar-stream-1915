@@ -169,7 +169,7 @@ $app->get('/editar_dependente/{id}', function ($id) use ($app) {
 
 
     return $app['twig']->render('editar_dependente.twig', array(
-        'names' => $names
+        'names' => $names, 'funcionario_id' => $names['funcionario_id'][0]
     ));
 });
 
