@@ -239,7 +239,7 @@ $app->post('/salvar_dependente/{id}', function (Request $request, $id) use ($app
 $app->post('/salvar_dependente/', function (Request $request) use ($app) {
     $nome = $request->get('nome');
     $funcionario_id= $request->get('funcionario_id');
-    $parentesco = $request->get('endereco');
+    $parentesco = $request->get('parentesco');
     $data_nascimento = $request->get('data_nascimento');
 
     //validacoes

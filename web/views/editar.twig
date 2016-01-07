@@ -39,7 +39,7 @@
                     </div>
                 </div>
 
-                <div class="form-group" hidden>
+                <div class="form-group" style="visibility: hidden">
                     <label class="control-label col-sm-2" for="id">funcionario_id:</label>
                     <div class="col-sm-10">
                         <input type="number" class="form-control" id="id" name="id" value="{{ id }}">
@@ -80,7 +80,7 @@
             <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th>ID</th>
+                    
                     <th>Nome</th>
                     <th>Parentesco</th>
                     <th>Ação</th>
@@ -89,7 +89,7 @@
                 </thead>
                 {% for n2 in names2 %}
                     <tr>
-                        <td><a href="/editar_dependente/{{ n2.id }}">{{ n2.id }}</a></td>
+
                         <td> {{ n2.nome }} </td>
                         <td> {{ n2.parentesco }} </td>
                         <td><a href="/editar_dependente/{{ n2.id }}">Editar</a> | <a href="/apagar_dependente/{{ n2.id }}">Apagar</a></td>
