@@ -113,7 +113,7 @@ $app->post('/salvar/{id}', function (Request $request, $id) use ($app) {
     $cpf = $request->get('cpf');
     $endereco = $request->get('endereco');
     $data_nascimento = $request->get('data_nascimento');
-    //return new Response($data_nascimento, 201);
+
     //validacoes
     if (!(validaData2($data_nascimento))){
         return new Response('Data inválida<br><br><a href="/editar/'.$id.'">Voltar</a> ', 201);
@@ -122,9 +122,7 @@ $app->post('/salvar/{id}', function (Request $request, $id) use ($app) {
         return new Response('CPF inválido<br><br><a href="/editar/'.$id.'">Voltar</a> ', 201);
     }
 
-
-
-
+    //update
     $sql = 'UPDATE funcionario
        SET  cpf = ' . $cpf . ',
             nome = \'' . $nome . '\',
@@ -144,6 +142,16 @@ $app->post('/salvar/', function (Request $request) use ($app) {
     $cpf = $request->get('cpf');
     $endereco = $request->get('endereco');
     $data_nascimento = $request->get('data_nascimento');
+
+    //validacoes
+    if (!(validaData2($data_nascimento))){
+        return new Response('Data inválida<br><br><a href="/editar/">Voltar</a> ', 201);
+    }
+    if (!(valida_cpf($cpf))){
+        return new Response('CPF inválido<br><br><a href="/editar/">Voltar</a> ', 201);
+    }
+
+    //insert
     $sql = 'INSERT into funcionario (cpf,nome,endereco,data_nascimento)
             VALUES (' . $cpf . ',\'' . $nome . '\',\'' . $endereco . '\',\'' . $data_nascimento . '\');';
     $st = $app['pdo']->prepare($sql);
@@ -198,6 +206,13 @@ $app->post('/salvar_dependente/{id}', function (Request $request, $id) use ($app
     $nome = $request->get('nome');
     $parentesco = $request->get('parentesco');
     $data_nascimento = $request->get('data_nascimento');
+
+    //validacoes
+    if (!(validaData2($data_nascimento))){
+        return new Response('Data inválida<br><br><a href="/editar_dependente/'.$id.'">Voltar</a> ', 201);
+    }
+
+    //update
     $sql = 'UPDATE dependente
        SET
             nome = \'' . $nome . '\',
@@ -217,6 +232,12 @@ $app->post('/salvar_dependente/', function (Request $request) use ($app) {
     $funcionario_id= $request->get('funcionario_id');
     $parentesco = $request->get('endereco');
     $data_nascimento = $request->get('data_nascimento');
+
+    //validacoes
+    if (!(validaData2($data_nascimento))){
+        return new Response('Data inválida<br><br><a href="/criar_dependente/'.$funcionario_id.'">Voltar</a> ', 201);
+    }
+
     $sql = 'INSERT into dependente (funcionario_id,nome,parentesco,data_nascimento)
             VALUES (' . $funcionario_id . ',\'' . $nome . '\',\'' . $parentesco . '\',\'' . $data_nascimento . '\');';
     $st = $app['pdo']->prepare($sql);
