@@ -136,7 +136,20 @@ $app->post('/salvar/', function (Request $request) use ($app) {
     $st = $app['pdo']->prepare($sql);
     $st->execute();
 
-    $id = $app['pdo']->lastInsertId();
+    //reabrindo
+    $sql = 'select id from funcionario
+            where
+                cpf = ' . $cpf . ' and
+                nome like \'' . $nome . '\' and
+                endereco like \'' . $endereco . '\' and
+                data_nascimento = \'' . $data_nascimento . '\');';
+    $st = $app['pdo']->prepare($sql);
+    $st->execute();
+
+    $row = $st->fetch(PDO::FETCH_ASSOC);
+    $id = $row['id'][0];
+
+    //$id = $app['pdo']->lastInsertId(); // não está funcionando
 
 
     //return new Response($sql, 201);
@@ -211,7 +224,20 @@ $app->post('/salvar_dependente/', function (Request $request) use ($app) {
     $st = $app['pdo']->prepare($sql);
     $st->execute();
 
-    $id = $app['pdo']->lastInsertId();
+    //reabrindo
+    $sql = 'select id from dependente
+            where
+                funcionario_id = ' . $funcionario_id . ' and
+                nome like \'' . $nome . '\' and
+                parentesco like \'' . $parentesco . '\' and
+                data_nascimento = \'' . $data_nascimento . '\');';
+    $st = $app['pdo']->prepare($sql);
+    $st->execute();
+
+    $row = $st->fetch(PDO::FETCH_ASSOC);
+    $id = $row['id'][0];
+
+    //$id = $app['pdo']->lastInsertId(); // não está funcionando
 
 
     //return new Response($sql, 201);
