@@ -1,6 +1,7 @@
 <?php
 
 require('../vendor/autoload.php');
+include ('funcoes.php');
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -55,7 +56,7 @@ $app->get('/db/', function () use ($app) {
 
 //  ----------------- app propriamente dito ----------------------
 
-// inicial pesquisa
+// inicial
 $app->get('/itriad/', function () use ($app) {
     $st = $app['pdo']->prepare('SELECT * FROM funcionario');
     $st->execute();
@@ -80,7 +81,7 @@ $app->get('/editar/{id}', function ($id) use ($app) {
 
     $names = array();
     while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-        $app['monolog']->addDebug('Row ' . $row['name']);
+        $app['monolog']->addDebug('Row ' . $row['nome']);
         $names[] = $row;
     }
 
@@ -90,7 +91,7 @@ $app->get('/editar/{id}', function ($id) use ($app) {
 
     $names2 = array();
     while ($row2 = $st2->fetch(PDO::FETCH_ASSOC)) {
-        $app['monolog']->addDebug('Row ' . $row2['name']);
+        $app['monolog']->addDebug('Row ' . $row2['nome']);
         $names2[] = $row2;
     }
 
@@ -112,6 +113,18 @@ $app->post('/salvar/{id}', function (Request $request, $id) use ($app) {
     $cpf = $request->get('cpf');
     $endereco = $request->get('endereco');
     $data_nascimento = $request->get('data_nascimento');
+
+    //validacoes
+    if (!validaData($data_nascimento)){
+        return new Response('Data inválida', 201);
+    }
+    if (!valida_cpf($cpf)){
+        return new Response('CPF inválido', 201);
+    }
+
+
+
+
     $sql = 'UPDATE funcionario
        SET  cpf = ' . $cpf . ',
             nome = \'' . $nome . '\',
@@ -136,24 +149,9 @@ $app->post('/salvar/', function (Request $request) use ($app) {
     $st = $app['pdo']->prepare($sql);
     $st->execute();
 
-    //reabrindo
-    $sql = 'select id from funcionario
-            where
-                cpf = ' . $cpf . ' and
-                nome like \'' . $nome . '\' and
-                endereco like \'' . $endereco . '\' and
-                data_nascimento = \'' . $data_nascimento . '\');';
-    $st = $app['pdo']->prepare($sql);
-    $st->execute();
-
-    $row = $st->fetch(PDO::FETCH_ASSOC);
-    $id = $row['id'][0];
-
-    //$id = $app['pdo']->lastInsertId(); // não está funcionando
-
 
     //return new Response($sql, 201);
-    return $app->redirect("/editar/$id");
+    return $app->redirect("/itriad/");
 });
 
 
@@ -176,7 +174,7 @@ $app->get('/editar_dependente/{id}', function ($id) use ($app) {
 
     $names = array();
     while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-        $app['monolog']->addDebug('Row ' . $row['name']);
+        $app['monolog']->addDebug('Row ' . $row['nome']);
         $names[] = $row;
     }
 
@@ -224,24 +222,8 @@ $app->post('/salvar_dependente/', function (Request $request) use ($app) {
     $st = $app['pdo']->prepare($sql);
     $st->execute();
 
-    //reabrindo
-    $sql = 'select id from dependente
-            where
-                funcionario_id = ' . $funcionario_id . ' and
-                nome like \'' . $nome . '\' and
-                parentesco like \'' . $parentesco . '\' and
-                data_nascimento = \'' . $data_nascimento . '\');';
-    $st = $app['pdo']->prepare($sql);
-    $st->execute();
-
-    $row = $st->fetch(PDO::FETCH_ASSOC);
-    $id = $row['id'][0];
-
-    //$id = $app['pdo']->lastInsertId(); // não está funcionando
-
-
     //return new Response($sql, 201);
-    return $app->redirect("/editar_dependente/$id");
+    return $app->redirect("/editar/$funcionario_id");
 });
 
 
