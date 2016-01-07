@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6797c0ca-6066-4964-9ca1-efd579405781" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.php" afterPath="$PROJECT_DIR$/web/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/views/criar.twig" afterPath="$PROJECT_DIR$/web/views/criar.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/views/editar.twig" afterPath="$PROJECT_DIR$/web/views/editar.twig" />
     </list>
     <ignored path="php-getting-started.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,8 +27,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6123348">
-              <caret line="232" column="44" selection-start-line="232" selection-start-column="44" selection-end-line="232" selection-end-column="44" />
+            <state vertical-scroll-proportion="1.722467">
+              <caret line="205" column="21" selection-start-line="205" selection-start-column="21" selection-end-line="205" selection-end-column="21" />
               <folding>
                 <element signature="e#68#113#0#PHP" expanded="true" />
                 <marker date="1452175854473" expanded="true" signature="1119:1143" placeholder="SELECT * FRO... test_table" />
@@ -96,8 +94,8 @@
       <file leaf-file-name="criar.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/views/criar.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.32">
-              <caret line="13" column="107" selection-start-line="13" selection-start-column="107" selection-end-line="13" selection-end-column="107" />
+            <state vertical-scroll-proportion="-7.04">
+              <caret line="11" column="70" selection-start-line="11" selection-start-column="70" selection-end-line="11" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -139,8 +137,8 @@
         <option value="$PROJECT_DIR$/web/views/header.html" />
         <option value="$PROJECT_DIR$/web/funcoes.php" />
         <option value="$PROJECT_DIR$/web/views/editar.twig" />
-        <option value="$PROJECT_DIR$/web/views/criar.twig" />
         <option value="$PROJECT_DIR$/web/index.php" />
+        <option value="$PROJECT_DIR$/web/views/criar.twig" />
       </list>
     </option>
   </component>
@@ -521,6 +519,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/views/criar.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.04">
+          <caret line="11" column="70" selection-start-line="11" selection-start-column="70" selection-end-line="11" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/views/editar.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.24">
@@ -529,18 +535,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/criar.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.32">
-          <caret line="13" column="107" selection-start-line="13" selection-start-column="107" selection-end-line="13" selection-end-column="107" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6123348">
-          <caret line="232" column="44" selection-start-line="232" selection-start-column="44" selection-end-line="232" selection-end-column="44" />
+        <state vertical-scroll-proportion="1.722467">
+          <caret line="205" column="21" selection-start-line="205" selection-start-column="21" selection-end-line="205" selection-end-column="21" />
           <folding>
             <element signature="e#68#113#0#PHP" expanded="true" />
             <marker date="1452175854473" expanded="true" signature="1119:1143" placeholder="SELECT * FRO... test_table" />
