@@ -15,7 +15,7 @@
  * @param    string    formato
  * @return    bool
  */
-function validaData($data, $formato = 'DD/MM/AAAA') {
+function validaData($data, $formato = 'AAAA-DD-MM') {
     switch($formato) {
         case 'DD-MM-AAAA':
         case 'DD/MM/AAAA':
