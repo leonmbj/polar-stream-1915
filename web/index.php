@@ -189,7 +189,7 @@ $app->get('/editar_dependente/{id}', function ($id) use ($app) {
     //carregar parentesco
     $conjuge = '';
     $filho = '';
-    if ($names['parentesco']=='Cônjuge'){
+    if ($names['parentesco'][0]=='Cônjuge'){
         $conjuge = 'selected';
     } else {
         $filho = 'selected';
