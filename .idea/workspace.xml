@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6797c0ca-6066-4964-9ca1-efd579405781" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/index.php" afterPath="$PROJECT_DIR$/web/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/views/criar_dependente.twig" afterPath="$PROJECT_DIR$/web/views/criar_dependente.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/views/editar.twig" afterPath="$PROJECT_DIR$/web/views/editar.twig" />
     </list>
     <ignored path="php-getting-started.iws" />
@@ -62,11 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="editar.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="editar.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/views/editar.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.4449339">
-              <caret line="82" column="20" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+            <state vertical-scroll-proportion="-23.68">
+              <caret line="37" column="67" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
               <folding>
                 <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -84,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="criar_dependente.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="criar_dependente.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/views/criar_dependente.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-28.16">
-              <caret line="44" column="75" selection-start-line="44" selection-start-column="75" selection-end-line="44" selection-end-column="75" />
+            <state vertical-scroll-proportion="0.6167401">
+              <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -135,13 +135,13 @@
         <option value="$PROJECT_DIR$/web/views/layout.html" />
         <option value="$PROJECT_DIR$/update.sh" />
         <option value="$PROJECT_DIR$/web/views/pesquisa.twig" />
-        <option value="$PROJECT_DIR$/web/views/criar_dependente.twig" />
         <option value="$PROJECT_DIR$/web/views/header.html" />
         <option value="$PROJECT_DIR$/web/funcoes.php" />
         <option value="$PROJECT_DIR$/web/views/criar.twig" />
         <option value="$PROJECT_DIR$/web/views/editar_dependente.twig" />
         <option value="$PROJECT_DIR$/web/index.php" />
         <option value="$PROJECT_DIR$/web/views/editar.twig" />
+        <option value="$PROJECT_DIR$/web/views/criar_dependente.twig" />
       </list>
     </option>
   </component>
@@ -506,14 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/criar_dependente.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.16">
-          <caret line="44" column="75" selection-start-line="44" selection-start-column="75" selection-end-line="44" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/views/editar_dependente.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-16.64">
@@ -557,11 +549,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/views/editar.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4449339">
-          <caret line="82" column="20" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+        <state vertical-scroll-proportion="-23.68">
+          <caret line="37" column="67" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
           <folding>
             <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/views/criar_dependente.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6167401">
+          <caret line="35" column="52" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
