@@ -164,7 +164,7 @@ $app->get('/apagar/{id}', function ($id) use ($app) {
     //apagar funcionario
     $st2 = $app['pdo']->prepare('DELETE FROM funcionario where id=:id');
     $st2->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    $st - 2 > execute(array(':id' => $id));
+    $st2-> execute(array(':id' => $id));
 
     return $app->redirect("/itriad/");
 });
