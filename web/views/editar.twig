@@ -2,6 +2,9 @@
 
 {% block content %}
 
+    {% autoescape 'html' %}
+    {% autoescape 'js' %}
+
     <div class="container">
         <h1>Funcionário </h1>
         {% for n in names %}
@@ -103,5 +106,8 @@
         </div>
 
     </div>
+
+    {% endautoescape %}
+    {% endautoescape %}
 
 {% endblock %}

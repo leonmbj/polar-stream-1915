@@ -1,7 +1,7 @@
 <?php
 
 require('../vendor/autoload.php');
-include ('funcoes.php');
+include('funcoes.php');
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,27 +38,13 @@ $app->register(new Herrera\Pdo\PdoServiceProvider(),
     )
 );
 
-// teste de bd
-$app->get('/db/', function () use ($app) {
-    $st = $app['pdo']->prepare('SELECT * FROM test_table');
-    $st->execute();
-
-    $names = array();
-    while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-        $app['monolog']->addDebug('Row ' . $row['name']);
-        $names[] = $row;
-    }
-
-    return $app['twig']->render('database.twig', array(
-        'names' => $names
-    ));
-});
 
 //  ----------------- app propriamente dito ----------------------
 
 // inicial
 $app->get('/itriad/', function () use ($app) {
     $st = $app['pdo']->prepare('SELECT * FROM funcionario');
+    //$st->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $st->execute();
 
     $names = array();
@@ -76,8 +62,9 @@ $app->get('/itriad/', function () use ($app) {
 
 // tela editar registro funcionario
 $app->get('/editar/{id}', function ($id) use ($app) {
-    $st = $app['pdo']->prepare('SELECT * FROM funcionario where id=' . $id);
-    $st->execute();
+    $st = $app['pdo']->prepare('SELECT * FROM funcionario where id=:id');
+    $st->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $st->execute(array(':id' => $id));
 
     $names = array();
     while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
@@ -86,8 +73,9 @@ $app->get('/editar/{id}', function ($id) use ($app) {
     }
 
     //gerar lista de dependentes
-    $st2 = $app['pdo']->prepare('SELECT * FROM dependente where funcionario_id=' . $id);
-    $st2->execute();
+    $st2 = $app['pdo']->prepare('SELECT * FROM dependente where funcionario_id=:id');
+    $st2->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $st2->execute(array(':id' => $id));
 
     $names2 = array();
     while ($row2 = $st2->fetch(PDO::FETCH_ASSOC)) {
@@ -115,22 +103,23 @@ $app->post('/salvar/{id}', function (Request $request, $id) use ($app) {
     $data_nascimento = $request->get('data_nascimento');
 
     //validacoes
-    if (!(valida_cpf($cpf))){
-        return new Response('CPF inválido<br><br><a href="/editar/'.$id.'">Voltar</a> ', 201);
+    if (!(valida_cpf($cpf))) {
+        return new Response('CPF inválido<br><br><a href="/editar/' . $id . '">Voltar</a> ', 201);
     }
-    if (!(validaData2($data_nascimento))){
-        return new Response('Data inválida<br><br><a href="/editar/'.$id.'">Voltar</a> ', 201);
+    if (!(validaData2($data_nascimento))) {
+        return new Response('Data inválida<br><br><a href="/editar/' . $id . '">Voltar</a> ', 201);
     }
 
     //update
     $sql = 'UPDATE funcionario
-       SET  cpf = ' . $cpf . ',
-            nome = \'' . $nome . '\',
-            endereco = \'' . $endereco . '\',
-            data_nascimento = \'' . $data_nascimento . '\'
-      where id=' . $id;
+       SET  cpf = :cpf,
+            nome = :nome,
+            endereco = :endereco,
+            data_nascimento = :data_nascimento
+      where id=:id';
     $st = $app['pdo']->prepare($sql);
-    $st->execute();
+    $st->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $st->execute(array(':id' => $id, ':cpf' => $cpf, ':nome' => $nome, ':endereco' => $endereco, ':data_nascimento' => $data_nascimento));
 
     //return new Response($sql, 201);
     return $app->redirect("/editar/$id");
@@ -144,18 +133,19 @@ $app->post('/salvar/', function (Request $request) use ($app) {
     $data_nascimento = $request->get('data_nascimento');
 
     //validacoes
-    if (!(valida_cpf($cpf))){
+    if (!(valida_cpf($cpf))) {
         return new Response('CPF inválido<br><br><a href="/editar/">Voltar</a> ', 201);
     }
-    if (!(validaData2($data_nascimento))){
+    if (!(validaData2($data_nascimento))) {
         return new Response('Data inválida<br><br><a href="/editar/">Voltar</a> ', 201);
     }
 
     //insert
     $sql = 'INSERT into funcionario (cpf,nome,endereco,data_nascimento)
-            VALUES (' . $cpf . ',\'' . $nome . '\',\'' . $endereco . '\',\'' . $data_nascimento . '\');';
+            VALUES (:cpf,:nome,:endereco,:data_nascimento);';
     $st = $app['pdo']->prepare($sql);
-    $st->execute();
+    $st->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $st->execute(array(':cpf' => $cpf, ':nome' => $nome, ':endereco' => $endereco, ':data_nascimento' => $data_nascimento));
 
 
     //return new Response($sql, 201);
@@ -165,20 +155,28 @@ $app->post('/salvar/', function (Request $request) use ($app) {
 
 // apagar registro funcionario
 $app->get('/apagar/{id}', function ($id) use ($app) {
-    $st = $app['pdo']->prepare('DELETE FROM funcionario where id=' . $id);
-    $st->execute();
+
+    //apagar dependentes
+    $st = $app['pdo']->prepare('DELETE FROM dependente where funcionario_id=:id');
+    $st->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $st->execute(array(':id' => $id));
+
+    //apagar funcionario
+    $st2 = $app['pdo']->prepare('DELETE FROM funcionario where id=:id');
+    $st2->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $st - 2 > execute(array(':id' => $id));
 
     return $app->redirect("/itriad/");
 });
-
 
 
 // ------------------------- DEPENDENTE -----------------------------
 
 // tela editar registro DEPENDENTE
 $app->get('/editar_dependente/{id}', function ($id) use ($app) {
-    $st = $app['pdo']->prepare('SELECT * FROM dependente where id=' . $id);
-    $st->execute();
+    $st = $app['pdo']->prepare('SELECT * FROM dependente where id=:id');
+    $st->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $st->execute(array(':id' => $id));
 
     $names = array();
     while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
@@ -189,7 +187,7 @@ $app->get('/editar_dependente/{id}', function ($id) use ($app) {
     //carregar parentesco
     $conjuge = '';
     $filho = '';
-    if ($names[0]['parentesco']=='Cônjuge'){
+    if ($names[0]['parentesco'] == 'Cônjuge') {
         $conjuge = 'selected';
     } else {
         $filho = 'selected';
@@ -217,19 +215,20 @@ $app->post('/salvar_dependente/{id}', function (Request $request, $id) use ($app
     $data_nascimento = $request->get('data_nascimento');
 
     //validacoes
-    if (!(validaData2($data_nascimento))){
-        return new Response('Data inválida<br><br><a href="/editar_dependente/'.$id.'">Voltar</a> ', 201);
+    if (!(validaData2($data_nascimento))) {
+        return new Response('Data inválida<br><br><a href="/editar_dependente/' . $id . '">Voltar</a> ', 201);
     }
 
     //update
     $sql = 'UPDATE dependente
        SET
-            nome = \'' . $nome . '\',
-            parentesco = \'' . $parentesco . '\',
-            data_nascimento = \'' . $data_nascimento . '\'
-      where id=' . $id;
+            nome = :nome,
+            parentesco = :parentesco,
+            data_nascimento = :data_nascimento
+      where id=:id';
     $st = $app['pdo']->prepare($sql);
-    $st->execute();
+    $st->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $st->execute(array(':id' => $id, ':nome' => $nome, ':parentesco' => $parentesco, ':data_nascimento' => $data_nascimento));
 
     //return new Response($sql, 201);
     return $app->redirect("/editar_dependente/$id");
@@ -238,19 +237,20 @@ $app->post('/salvar_dependente/{id}', function (Request $request, $id) use ($app
 //criar novo registro DEPENDENTE
 $app->post('/salvar_dependente/', function (Request $request) use ($app) {
     $nome = $request->get('nome');
-    $funcionario_id= $request->get('funcionario_id');
+    $funcionario_id = $request->get('funcionario_id');
     $parentesco = $request->get('parentesco');
     $data_nascimento = $request->get('data_nascimento');
 
     //validacoes
-    if (!(validaData2($data_nascimento))){
-        return new Response('Data inválida<br><br><a href="/criar_dependente/'.$funcionario_id.'">Voltar</a> ', 201);
+    if (!(validaData2($data_nascimento))) {
+        return new Response('Data inválida<br><br><a href="/criar_dependente/' . $funcionario_id . '">Voltar</a> ', 201);
     }
 
     $sql = 'INSERT into dependente (funcionario_id,nome,parentesco,data_nascimento)
-            VALUES (' . $funcionario_id . ',\'' . $nome . '\',\'' . $parentesco . '\',\'' . $data_nascimento . '\');';
+            VALUES (:funcionario_id,:nome,:parentesco,:data_nascimento);';
     $st = $app['pdo']->prepare($sql);
-    $st->execute();
+    $st->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $st->execute(array(':funcionario_id' => $funcionario_id, ':nome' => $nome, ':parentesco' => $parentesco, ':data_nascimento' => $data_nascimento));
 
     //return new Response($sql, 201);
     return $app->redirect("/editar/$funcionario_id");
@@ -259,8 +259,9 @@ $app->post('/salvar_dependente/', function (Request $request) use ($app) {
 
 // apagar registro DEPENDENTE
 $app->get('/apagar_dependente/{id}', function ($id) use ($app) {
-    $st = $app['pdo']->prepare('DELETE FROM dependente where id=' . $id);
-    $st->execute();
+    $st = $app['pdo']->prepare('DELETE FROM dependente where id=:id');
+    $st->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $st->execute(array(':id' => $id));
 
     return $app->redirect("/itriad/");
 });
