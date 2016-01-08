@@ -157,7 +157,7 @@ $app->post('/salvar/', function (Request $request) use ($app) {
 $app->get('/apagar/{id}', function ($id) use ($app) {
 
     //apagar dependentes
-    $st = $app['pdo']->prepare('DELETE FROM dependente where funcionario_id=:id');
+    $st = $app['pdo']->prepare('DELETE FROM dependente where exists (select 1 from funcionario where id=:id)');
     $st->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $st->execute(array(':id' => $id));
 
